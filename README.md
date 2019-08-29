@@ -64,6 +64,6 @@ Here are some zip codes / city names to test!
 
 #### Tips
 
-* Work smarter not harder, reference past work to get you started (see the Giphy example from lesson 08)
+* Work smarter not harder, reference past work to get you started (see the Giphy API code along from lesson 08)
 
 * Read the Open Weather API documentation, the documentation contains code examples that helps you figure out how to use the API

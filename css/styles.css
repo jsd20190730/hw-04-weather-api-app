@@ -30,3 +30,29 @@ input {
 	text-transform:uppercase;
 	font-size:14px;
 }
+
+table {
+	margin:0 auto;
+	font-size:18px;
+}
+
+#resultsDescription {
+	font-size:25px;
+	padding:10px 0;
+}
+
+.resultsTemps {
+	font-size:16px;
+}
+
+
+.lowCurrentTemp {
+	color:#558ecf;
+}
+
+.highCurrentTemp {
+	color:#de4635;
+}
+
+
+

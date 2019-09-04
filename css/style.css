@@ -74,36 +74,37 @@ body {
 }
 
 h1 {
-    font-size: 3.2em;
+    font-size: 2.4em;
     text-align: center;
     color: #fff;
-    font-weight: 100;
+    font-weight: 400;
     margin-bottom: 10px;
 }
 
 .container {
-    padding: 2em 0 0;
+    padding: 1.3em 0 0;
 }
 
 .main {
     width: 25%;
     margin: 2em auto;
-    background: rgba(0, 0, 0, 0.34);
+    background: rgba(0, 0, 0, 0.45);
     background-size: cover;
     padding: 2em;
+    border-radius: 20px;
 }
 
 #date {
     font-size: 1.4em;
     color: #fff;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1.8em;
 }
 
 #day {
     font-size: 1.6em;
     color: #fff;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1.8em;
 }
 
@@ -124,7 +125,7 @@ border: 1px rgba(0, 0, 0, 0.34);
 border-radius: 25px;
 padding: 0px 2em;
 margin: 0;
-width: 35%;
+width: 40%;
 height: 60px;
 line-height: 60px;
 vertical-align: middle;
@@ -138,12 +139,19 @@ vertical-align: middle;
 	zoom:1;
 	filter:alpha(opacity=85);
 	opacity:0.85;
-	background:transparent url(../img/search-icon.png) top left no-repeat;
+	background:transparent url(../img/search-icon.png) center center no-repeat;
+  vertical-align: middle;
+  margin: 0;
 }
 
 #search-btn:hover{
 	filter:alpha(opacity=100);
 	opacity:1;
+}
+
+#weather-status{
+  text-transform: capitalize;
+  font-size: 1.8em;
 }
 
 .text-container {
@@ -168,9 +176,9 @@ vertical-align: middle;
 }
 
 .text-container h2 {
-    font-size: 8em;
-    font-weight: 900;
-    color: rgba(255, 215, 1, 0.59);
+    font-size: 7em;
+    font-weight: 600;
+    color: rgba(255, 215, 1, 0.80);
 }
 
 .text-container span {
@@ -180,7 +188,7 @@ vertical-align: middle;
 }
 
 .text-container h4 {
-    font-size: 2.5em;
+    font-size: 2.3em;
     color: #fff;
     letter-spacing: 3px;
 }
@@ -255,7 +263,7 @@ h1 {
 
 @media(max-width: 600px){
   h1 {
-      font-size: 2.4em;
+      font-size: 2.6em;
    }
   .text-container h6 {
       margin-top: 0.5em;
@@ -267,7 +275,7 @@ h1 {
 
 @media(max-width: 480px){
   h1 {
-      font-size: 2em;
+      font-size: 2.6em;
    }
   .main {
       width: 57%;
@@ -298,7 +306,7 @@ h1 {
 
 @media(max-width: 384px){
   h1 {
-      font-size: 1.8em;
+      font-size: 2.4em;
   }
   .main{
       width: 70%;
@@ -307,7 +315,7 @@ h1 {
 
 @media(max-width:320px){
   h1 {
-      font-size: 1.5em;
+      font-size: 2.4em;
    }
   .main {
       width: 75%;

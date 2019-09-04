@@ -1,71 +1,3 @@
-/*# Build a Weather App
-
-Here's an exciting challenge: You'll be building a small weather app, using your newfound skills with APIs!
-
-***
-
-## Instructions
-
-#### Get an API Key for the OpenWeather API --  DONE
-
-For this lab you'll be using the Open Weather Data API. In order to use it, please follow these steps:
-
-1. Sign up for a free [Open Weather Map](https://home.openweathermap.org/users/sign_up) account!
-
-2. Once you've signed up, you're given an [API key](https://home.openweathermap.org/api_keys). Copy that API key and keep track of it somewhere!
-
-3. Go to [OpenWeatherMap](http://openweathermap.org/api) and scroll down, you'll see a section that says "API Documentation."
-
-4. Open Insomnia to check out the data you're working with and to verify that your api key works. Make a GET request to the following URL in Insomnia, adding your API key to the end.
-
-5. Review these instructions on how you should structure your API requests: https://openweathermap.org/appid#use
-
-```
-https://api.openweathermap.org/data/2.5/weather?q=10010&appid=[PUT YOUR API KEY HERE]
-
-https://api.openweathermap.org/data/2.5/weather?q=brooklyn&appid=[PUT YOUR API KEY HERE]
-```
-
-#### ⚡️ Plan your implementation approach using pseudocode -- DONE
-If you find the assignment too challenging to complete, you can bet the first place to check is your pseudocode!
-
-#### ⚡️ You need to make the following files to support the app:
-- [ ] `main.js`
-- [ ] `index.html`
-- [ ] `style.css`
-
-Note: The design of the app is totally up to you, we're mainly interested in the functionality
-
-#### ⚡️ Your page should have:
-- [ ] An **input field** for a user to enter a zip code or city name
-- [ ] A **submit button**
-- [ ] When the submit button is clicked:
-    - [ ] A **GET** request should fetch the weather data from the OpenWeather API
-    - [ ] The following data should be rendered to the page:
-        - [ ] City name
-        - [ ] Current temperature (displayed in Fahrenheit)
-        - [ ] Weather description
-        - [ ] Min temp
-        - [ ] Max temp
-- [ ] Have the temperature turn blue if under 40, and red if above 90.
-
-Here are some zip codes / city names to test!
-
-- 99501 (Anchorage)
-- 99723 (Barrow, AK)
-- 60605 (Chicago)
-- 70124 (New Orleans)
-- 77030 (Houston, TX)
-- 00902 (San Juan, Puerto Rico)
-- 46923 (Delphi, IN)
-- 94123 (San Francisco, CA)
-
-#### Tips
-
-* Work smarter not harder, reference past work to get you started (see the Giphy API code along from lesson 08)
-
-* Read the Open Weather API documentation, the documentation contains code examples that helps you figure out how to use the API*/
-
 /*====== Psuedocode! BY CAS! <^^> =======
   By default everything on the page is hidden except the form
   When entering value form field will expand
@@ -74,44 +6,44 @@ Here are some zip codes / city names to test!
   If no value then do not make API request
   On Function Date is created and added (without API)
   City Name is added
+  Status is added
+  Switch statment for every type of status will change background and icon accordingly
+  Temp is converted from Kelvin to Fahrenheit
   Current temp is added
   Min / Max temp is added
-  Status is added
-  Icon gets added
-  background changes
+  Temp changes color if it below 40 degrees or above 90 degrees
+*/
+
+/* whats left
+change temperature Kelvin to Farenheit
+change color to blue
+
 */
 
 
 $(document).ready(function() {
+  // icons array
+  let icons = new Skycons({"color": "#fff"}),
+  list  = [ "clear-night","clear-day", "partly-cloudy-day","partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind", "fog"], i;
+  for(i = list.length; i--; )
+  icons.set(list[i], list[i]);
+  icons.play();
+
+  //Hide items on load
+  $('.main').hide()
+  $('#clear-day').hide()
+  $('#partly-cloudy-day').hide()
+  $('#cloudy').hide()
+  $('#rain').hide()
+  $('#sleet').hide()
+  $('#snow').hide()
+  $('#wind').hide()
+  $('#fog').hide()
 
   // hide scroll bar
   setTimeout(hideURLbar, 0); }, false);
   function hideURLbar(){ window.scrollTo(0,1);
 
-  // create day and date
-  let mydate = new Date()
-  let year = mydate.getYear()
-  if(year<1000)
-  year+=1900
-  let day = mydate.getDay()
-  let month = mydate.getMonth()
-  let daym = mydate.getDate()
-  if(daym < 10)
-  daym ="0"+ daym
-  let dayarray = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
-  let montharray = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec")
-
-  // add dates to html
-  $('#day').text(""+dayarray[day]+"")
-  $('#date').text(""+montharray[month]+" "+daym+" "+year+"")
-
-  // icons array
-  let icons = new Skycons({"color": "#fff"}),
-  // list  = [ "clear-night","clear-day", "partly-cloudy-day","partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind", "fog"], i;
-  list  = [ "clear-night","clear-day", "partly-cloudy-day","partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind", "fog"], i;
-  for(i = list.length; i--; )
-  icons.set(list[i], list[i]);
-  icons.play();
 
   //Animate search Bar
   let searchField = $('#zip-code')
@@ -131,7 +63,7 @@ $(document).ready(function() {
   $(searchField).on('blur', function(){
     if(searchField.val() == ''){
       $(searchField).animate({
-        width:'35%'
+        width:'40%'
       },200, function(){})
       $(icon).animate({
         right:'5px'
@@ -176,10 +108,424 @@ $(document).ready(function() {
   .done((response) => {
     // execute this function if request is successful
     console.log(response)
-    displayResults(response.data)
+    displayResults(response)
   })
   .fail(() => {
     // execute this function if request fails
-    alert('Please enter a valid zip code')
+    alert('Please enter a valid city or zip code')
   })
+
+  function displayResults(weatherData) {
+
+//show main container
+  $('.main').show()
+
+  // add date
+  // create day and date
+  let mydate = new Date()
+  let year = mydate.getYear()
+  if(year<1000)
+  year+=1900
+  let day = mydate.getDay()
+  let month = mydate.getMonth()
+  let daym = mydate.getDate()
+  if(daym < 10)
+  daym ="0"+ daym
+  let dayarray = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+  let montharray = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec")
+
+  // add day to html
+  $('#day').text(" "+montharray[month]+" "+daym+" "+dayarray[day]+"")
+
+  // add city back to html
+  $('#city').text(
+    `${weatherData.name},${weatherData.sys.country}`
+  )
+
+// function declared for pulling in results once container is shown
+  getWeatherStatus()
+
+  // create functions for all different types of weather
+  function getWeatherStatus(displayResults){
+    let status = `${weatherData.weather[0].description}`
+
+    //add status back to the html, no matter what the status
+    $('#weather-status').text(status)
+
+    //convert Kelvin to Farenheit
+    function convertToF(kelvin) {
+
+    let celcius = kelvin - 273
+
+    let farenheit = celcius * (9/5) + 32
+
+    return Math.floor(farenheit)
+    }
+
+    // get Temps - currentTemp, minTemp, maxTemp
+    const currentTemp = convertToF(weatherData.main.temp)
+    console.log(currentTemp)
+
+    const maxTemp = convertToF(weatherData.main.temp_max)
+    console.log(maxTemp)
+
+    const minTemp = convertToF(weatherData.main.temp_min)
+    console.log(minTemp)
+
+    //Change current temp to red or blue
+    if (currentTemp < 40) {
+    $("#current-temp").css('color','rgba(34, 169, 239, 0.90)')
+  } if (currentTemp > 90) {
+    $("#current-temp").css('color','rgba(247, 62, 97, 0.90)')
+  } else if (currentTemp < 90 && currentTemp > 40) {
+    $("#current-temp").css('color','rgba(255, 215, 1, 0.80)')
+  }
+
+    //add back Temperatures back to HTML
+    $('#current-temp').html(`${currentTemp}°`)
+    $('#min-temp').html(`${minTemp}°F&nbsp;/&nbsp;`)
+    $('#max-temp').html(`${maxTemp}°F`)
+
+
+  // BEGIN SWITCH STATEMENT FOR ICONS AND BACKGROUND
+
+  //CLEAR SKIES BEGINS
+  switch (status) {
+  case ('clear sky'):
+    console.log("clear skies all day bitch")
+    $("body").css('background-image','url("img/sunny.jpg")');
+    $("h1").css('color','black');
+    $('#clear-day').show()
+    $('#partly-cloudy-day').hide()
+    $('#cloudy').hide()
+    $('#rain').hide()
+    $('#sleet').hide()
+    $('#snow').hide()
+    $('#wind').hide()
+    $('#fog').hide()
+    break;
+// Clear skies ends fuck noooooo :(
+
+//PARTLY CLOUDY BEGINS
+  case ('scattered clouds'):
+  case ('few clouds'):
+    console.log("partly cloudy")
+    $("body").css('background-image','url("img/partly-cloudy.jpg")');
+    $("h1").css('color','black');
+    $('#partly-cloudy-day').show()
+    $('#clear-day').hide()
+    $('#cloudy').hide()
+    $('#rain').hide()
+    $('#sleet').hide()
+    $('#snow').hide()
+    $('#wind').hide()
+    $('#fog').hide()
+    break;
+// PARTLY CLOUDY ENDS
+
+// CLOUDY BEGINS
+  case ('cloudy'):
+  case ('broken clouds'):
+  case ('overcast clouds'):
+    console.log("cloudy")
+    $("body").css('background-image','url("img/cloudy.jpg")');
+    $("h1").css('color','white');
+    $('#cloudy').show()
+    $('#clear-day').hide()
+    $('#partly-cloudy-day').hide()
+    $('#rain').hide()
+    $('#sleet').hide()
+    $('#snow').hide()
+    $('#wind').hide()
+    $('#fog').hide()
+    break;
+// CLOUDY ENDS
+
+// RAIN BEGINS
+  case ('drizzle'):
+  case ('light intensity drizzle'):
+  case ('heavy intensity drizzle'):
+  case ('light intensity drizzle rain'):
+  case ('drizzle rain'):
+  case ('heavy intensity drizzle rain'):
+  case ('shower rain and drizzle'):
+  case ('heavy shower rain and drizzle'):
+  case ('shower drizzle'):
+    console.log("drizzle")
+    $("body").css('background-image','url("img/drizzle.jpg")');
+    $("h1").css('color','white');
+    $('#rain').show()
+    $('#clear-day').hide()
+    $('#partly-cloudy-day').hide()
+    $('#cloudy').hide()
+    $('#sleet').hide()
+    $('#snow').hide()
+    $('#wind').hide()
+    $('#fog').hide()
+    break;
+// RAIN ENDS
+
+// RAIN BEGINS
+  case ('light rain'):
+  case ('light intensity rain'):
+  case ('ragged shower rain'):
+    console.log("rain")
+    $("body").css('background-image','url("img/rainy.jpg")');
+    $("h1").css('color','white');
+    $('#rain').show()
+    $('#clear-day').hide()
+    $('#partly-cloudy-day').hide()
+    $('#cloudy').hide()
+    $('#sleet').hide()
+    $('#snow').hide()
+    $('#wind').hide()
+    $('#fog').hide()
+    break;
+// RAIN ENDS
+
+// HEAVY RAIN BEGINS
+  case ('shower rain'):
+  case ('heavy intensity rain'):
+  case ('moderate rain'):
+  case ('very heavy rain'):
+  case ('extreme rain'):
+    console.log("Heavy Rain")
+    $("body").css('background-image','url("img/heavy-rain.jpg")');
+    $("h1").css('color','black');
+    $('#rain').show()
+    $('#clear-day').hide()
+    $('#partly-cloudy-day').hide()
+    $('#cloudy').hide()
+    $('#sleet').hide()
+    $('#snow').hide()
+    $('#wind').hide()
+    $('#fog').hide()
+    break;
+// HEAVY RAIN ENDS
+
+//FOG BEGINS
+  case ('fog'):
+    console.log("fog")
+    $("body").css('background-image','url("img/fog.jpg")');
+    $("h1").css('color','black');
+    $('#fog').show()
+    $('#clear-day').hide()
+    $('#partly-cloudy-day').hide()
+    $('#cloudy').hide()
+    $('#rain').hide()
+    $('#sleet').hide()
+    $('#snow').hide()
+    $('#wind').hide()
+    break;
+// FOG ENDS
+
+//MIST BEGINS
+  case ('mist'):
+    console.log("mist")
+    $("body").css('background-image','url("img/mist.jpg")');
+    $("h1").css('color','black');
+    $('#fog').show()
+    $('#clear-day').hide()
+    $('#partly-cloudy-day').hide()
+    $('#cloudy').hide()
+    $('#rain').hide()
+    $('#sleet').hide()
+    $('#snow').hide()
+    $('#wind').hide()
+    break;
+// MIST ENDS
+
+//SAND BEGINS
+  case ('sand'):
+  case ('sand/ dust whirls'):
+    console.log("sand")
+    $("body").css('background-image','url("img/sand.jpg")');
+    $("h1").css('color','black');
+    $('#fog').show()
+    $('#clear-day').hide()
+    $('#partly-cloudy-day').hide()
+    $('#cloudy').hide()
+    $('#rain').hide()
+    $('#sleet').hide()
+    $('#snow').hide()
+    $('#wind').hide()
+    break;
+// SAND ENDS
+
+// TORNADO BEGINS
+  case ('tornado'):
+    console.log("tornado")
+    $("body").css('background-image','url("img/tornado.jpg")');
+    $("h1").css('color','white');
+    $('#wind').show()
+    $('#clear-day').hide()
+    $('#partly-cloudy-day').hide()
+    $('#cloudy').hide()
+    $('#rain').hide()
+    $('#sleet').hide()
+    $('#snow').hide()
+    $('#fog').hide()
+    break;
+// TORNADO ENDS
+
+// SQUALLS BEGINS
+  case ('squalls'):
+    console.log("squalls")
+    $("body").css('background-image','url("img/windy.jpg")');
+    $("h1").css('color','black');
+    $('#wind').show()
+    $('#clear-day').hide()
+    $('#partly-cloudy-day').hide()
+    $('#cloudy').hide()
+    $('#rain').hide()
+    $('#sleet').hide()
+    $('#snow').hide()
+    $('#fog').hide()
+    break;
+// SQUALLS ENDS
+
+// DUST BEGINS
+  case ('dust'):
+    console.log("dust")
+    $("body").css('background-image','url("img/dust.jpg")');
+    $("h1").css('color','black');
+    $('#fog').show()
+    $('#clear-day').hide()
+    $('#partly-cloudy-day').hide()
+    $('#cloudy').hide()
+    $('#rain').hide()
+    $('#sleet').hide()
+    $('#snow').hide()
+    $('#wind').hide()
+    break;
+// DUST ENDS
+
+// ASH BEGINS
+  case ('volcanic ash'):
+    console.log("ash")
+    $("body").css('background-image','url("img/ash.jpg")');
+    $("h1").css('color','white');
+    $('#fog').show()
+    $('#clear-day').hide()
+    $('#partly-cloudy-day').hide()
+    $('#cloudy').hide()
+    $('#rain').hide()
+    $('#sleet').hide()
+    $('#snow').hide()
+    $('#wind').hide()
+    break;
+// ASH ENDS
+
+// HAZE BEGINS
+  case ('haze'):
+    console.log("haze")
+    $("body").css('background-image','url("img/haze.jpg")');
+    $("h1").css('color','black');
+    $('#fog').show()
+    $('#clear-day').hide()
+    $('#partly-cloudy-day').hide()
+    $('#cloudy').hide()
+    $('#rain').hide()
+    $('#sleet').hide()
+    $('#snow').hide()
+    $('#wind').hide()
+    break;
+// HAZE ENDS
+
+// SMOKE BEGINS
+  case ('smoke'):
+    console.log("smoke")
+    $("body").css('background-image','url("img/smoke.jpg")');
+    $("h1").css('color','black');
+    $('#fog').show()
+    $('#clear-day').hide()
+    $('#partly-cloudy-day').hide()
+    $('#cloudy').hide()
+    $('#rain').hide()
+    $('#sleet').hide()
+    $('#snow').hide()
+    $('#wind').hide()
+    break;
+// SMOKE ENDS
+
+//THUNDERSTORM BEGINS
+  case ('thunderstorm'):
+  case ('thunderstorm with rain'):
+  case ('thunderstorm with light rain'):
+  case ('thunderstorm with heavy rain'):
+  case ('light thunderstorm'):
+  case ('heavy thunderstorm'):
+  case ('ragged thunderstorm'):
+  case ('thunderstorm with light drizzle'):
+  case ('thunderstorm with drizzle'):
+  case ('thunderstorm with heavy drizzle'):
+    console.log("thunderstorm")
+    $("body").css('background-image','url("img/lightning.jpg")');
+    $("h1").css('color','white');
+    $('#rain').show()
+    $('#clear-day').hide()
+    $('#partly-cloudy-day').hide()
+    $('#cloudy').hide()
+    $('#sleet').hide()
+    $('#snow').hide()
+    $('#wind').hide()
+    $('#fog').hide()
+    break;
+// THUNDERSTORM ENDS
+
+//SNOW BEGINS
+  case ('sleet'):
+  case ('light shower sleet'):
+  case ('shower sleet'):
+  case ('freezing rain'):
+  case ('rain and snow'):
+    console.log("sleet")
+    $("body").css('background-image','url("img/sleet.jpg")');
+    $("h1").css('color','white');
+    $('#sleet').show()
+    $('#clear-day').hide()
+    $('#partly-cloudy-day').hide()
+    $('#cloudy').hide()
+    $('#rain').hide()
+    $('#snow').hide()
+    $('#wind').hide()
+    $('#fog').hide()
+    break;
+// SNOW ENDS
+
+//SNOW BEGINS
+  case ('snow'):
+  case ('light snow'):
+  case ('heavy snow'):
+  case ('light rain and snow'):
+  case ('rain and snow'):
+  case ('light shower snow'):
+  case ('shower snow'):
+  case ('heavy shower snow'):
+    console.log("snow")
+    $("body").css('background-image','url("img/snow.jpg")');
+    $("h1").css('color','white');
+    $('#snow').show()
+    $('#clear-day').hide()
+    $('#partly-cloudy-day').hide()
+    $('#cloudy').hide()
+    $('#rain').hide()
+    $('#sleet').hide()
+    $('#wind').hide()
+    $('#fog').hide()
+    break;
+// SNOW ENDS
+
+//DEFAULT JUST IN CASE IF I MISSED A VALUE
+  default:
+    console.log("no image")
+    $("body").css('background-image','url("img/default.jpg")');
+    $("h1").css('color','white');
+    // end switch statement
+    }
+  //end display results
+  }
+// end display weather data
+ }
+// end document ready
 }

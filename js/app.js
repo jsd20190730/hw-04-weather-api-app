@@ -59,9 +59,12 @@ $(function(){
 	    })
 
 	    // execute this function if request fails
-	    .fail(() => {
+	    .fail((error) => {
 
-		    console.log('error')
+		    console.log(`error: ${error}`)
+
+		    displayError()
+
 
 	    })
 
@@ -96,7 +99,7 @@ $(function(){
 						<td class="resultsTemps">Right now: <span class="currentTemp">${currentTemp}&deg; F</span></td>
 					</tr>
 					<tr>
-						<td class="resultsTemps">Today's range: ${maxTemp} - ${minTemp}</td>
+						<td class="resultsTemps">Today's range: ${maxTemp} - ${minTemp}&deg; F</td>
 					</tr>
 				</tbody>
 			</table>`
@@ -110,6 +113,13 @@ $(function(){
 		} else if (currentTemp > 90) {
 			$(".currentTemp").addClass("highCurrentTemp")
 		}
+
+	}
+
+	// create function to display error message below the input field
+	function displayError(){
+
+		$('#displayError').text('enter city name or zip code')
 
 	}
 

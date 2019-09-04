@@ -22,7 +22,7 @@ button {
 }
 
 input {
-	margin:10px 0;
+	margin:5px 0;
 	padding:10px;
 	width:250px;
 	text-align:center;
@@ -34,6 +34,11 @@ input {
 table {
 	margin:0 auto;
 	font-size:18px;
+}
+
+#displayError {
+	font-size:12px;
+	color:#e34444;
 }
 
 #resultsDescription {

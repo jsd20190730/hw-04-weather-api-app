@@ -2,11 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Weather API APP</title>
+    <title>What's the weather?</title>
     <link href="css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
   </head>
 
   <body>
+    
+    <div>
+
+      <img src="https://cdn1.iconfinder.com/data/icons/weather-413/58/Colorful_fairytale_fantasy_magic_magician_rainbow-512.png" width="125" alt="" />
+      <h1>What's the weather?</h1>
+
+      <form id="search">
+        <input type="text" id="query" />
+        <div id="displayError">&nbsp;</div>
+        <button>Search City</button>
+      </form>
+
+      <div id="displayResults">
+      </div>
+
+    </div>
 
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"

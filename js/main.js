@@ -14,12 +14,6 @@
   Temp changes color if it below 40 degrees or above 90 degrees
 */
 
-/* whats left
-change temperature Kelvin to Farenheit
-change color to blue
-
-*/
-
 
 $(document).ready(function() {
   // icons array
@@ -208,6 +202,7 @@ $(document).ready(function() {
 
 //PARTLY CLOUDY BEGINS
   case ('scattered clouds'):
+  case ('broken clouds'):
   case ('few clouds'):
     console.log("partly cloudy")
     $("body").css('background-image','url("img/partly-cloudy.jpg")');
@@ -225,7 +220,6 @@ $(document).ready(function() {
 
 // CLOUDY BEGINS
   case ('cloudy'):
-  case ('broken clouds'):
   case ('overcast clouds'):
     console.log("cloudy")
     $("body").css('background-image','url("img/cloudy.jpg")');

@@ -175,7 +175,7 @@ $(document).ready(function() {
     $("#current-temp").css('color','rgba(34, 169, 239, 0.90)')
   } if (currentTemp > 90) {
     $("#current-temp").css('color','rgba(247, 62, 97, 0.90)')
-  } else if (currentTemp < 90 && currentTemp > 40) {
+  } else if (currentTemp < 90 && currentTemp > 39) {
     $("#current-temp").css('color','rgba(255, 215, 1, 0.80)')
   }
 

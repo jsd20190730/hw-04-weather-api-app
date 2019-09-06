@@ -107,7 +107,7 @@ $(document).ready(function() {
 
       } catch (error) {
         console.log(error)
-        alert('oh no, something wrong happened')
+        alert('Please enter valid city or zip')
       }
 
   function displayResults(weatherData) {

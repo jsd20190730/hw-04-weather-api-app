@@ -34,16 +34,6 @@ $(document).ready(function() {
   $('#wind').hide()
   $('#fog').hide()
 
-  //convert Kelvin to Farenheit
-  function convertToF(kelvin) {
-
-  let celcius = kelvin - 273
-
-  let farenheit = celcius * (9/5) + 32
-
-  return Math.floor(farenheit)
-  }
-
 
   // hide scroll bar
   setTimeout(hideURLbar, 0); }, false);

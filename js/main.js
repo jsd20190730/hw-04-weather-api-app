@@ -96,7 +96,7 @@ $(document).ready(function() {
     try {
 
       const url = 'https://api.openweathermap.org/data/2.5/weather'
-      const apiKey = '3798ae16b21aa3c58a80b68ea711bf67'
+      const apiKey = '4159a716c99e2d3e9c669ff6a22c35db'
 
       let response = await axios.get(url, {
           params: {

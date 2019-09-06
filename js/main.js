@@ -34,6 +34,17 @@ $(document).ready(function() {
   $('#wind').hide()
   $('#fog').hide()
 
+  //convert Kelvin to Farenheit
+  function convertToF(kelvin) {
+
+  let celcius = kelvin - 273
+
+  let farenheit = celcius * (9/5) + 32
+
+  return Math.floor(farenheit)
+  }
+
+
   // hide scroll bar
   setTimeout(hideURLbar, 0); }, false);
   function hideURLbar(){ window.scrollTo(0,1);
@@ -89,10 +100,11 @@ $(document).ready(function() {
     })
   }
 
+  // async function begins
   async function search(zip) {
 
     try {
-    // async needs to be called in the function
+
       const url = 'https://api.openweathermap.org/data/2.5/weather'
       const apiKey = '3798ae16b21aa3c58a80b68ea711bf67'
 
@@ -109,6 +121,7 @@ $(document).ready(function() {
         console.log(error)
         alert('Please enter valid city or zip')
       }
+    }
 
   function displayResults(weatherData) {
 
@@ -519,8 +532,6 @@ $(document).ready(function() {
     // end switch statement
     }
   //end display results
-  }
-// end display weather data
  }
 // end document ready
 }

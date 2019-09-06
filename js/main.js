@@ -89,25 +89,26 @@ $(document).ready(function() {
     })
   }
 
-  function search(zip){
-  // function that makes the API request
-  const url = "https://api.openweathermap.org/data/2.5/weather"
-  const apiKey = "3798ae16b21aa3c58a80b68ea711bf67"
+  async function search(zip) {
 
-  $.ajax({
-    url: url,
-    type: 'GET',
-    data: { q: zip, appid: apiKey }
-  })
-  .done((response) => {
-    // execute this function if request is successful
-    console.log(response)
-    displayResults(response)
-  })
-  .fail(() => {
-    // execute this function if request fails
-    alert('Please enter a valid city or zip code')
-  })
+    try {
+    // async needs to be called in the function
+      const url = 'https://api.openweathermap.org/data/2.5/weather'
+      const apiKey = '3798ae16b21aa3c58a80b68ea711bf67'
+
+      let response = await axios.get(url, {
+          params: {
+          q: zip,
+          appid: apiKey
+          }
+        })
+        console.log(response.data)
+        displayResults(response.data)
+
+      } catch (error) {
+        console.log(error)
+        alert('oh no, something wrong happened')
+      }
 
   function displayResults(weatherData) {
 

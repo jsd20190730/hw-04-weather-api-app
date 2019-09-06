@@ -289,7 +289,7 @@ $(document).ready(function() {
   case ('extreme rain'):
     console.log("Heavy Rain")
     $("body").css('background-image','url("img/heavy-rain.jpg")');
-    $("h1").css('color','black');
+    $("h1").css('color','white');
     $('#rain').show()
     $('#clear-day').hide()
     $('#partly-cloudy-day').hide()

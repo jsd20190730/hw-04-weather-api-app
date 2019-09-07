@@ -135,16 +135,18 @@ $(document).ready(function() {
   let year = mydate.getYear()
   if(year<1000)
   year+=1900
+  let hours = mydate.getHours()
+  let min = mydate.getMinutes()
   let day = mydate.getDay()
   let month = mydate.getMonth()
   let daym = mydate.getDate()
   if(daym < 10)
   daym ="0"+ daym
-  let dayarray = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+  let dayarray = new Array("Sun","Mon","Tues","Wed","Thurs","Fri","Sat")
   let montharray = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec")
 
   // add day to html
-  $('#day').text(""+dayarray[day]+", "+montharray[month]+" "+daym+"")
+  $('#day').text(""+hours+":"+min+" "+dayarray[day]+", "+montharray[month]+" "+daym+"")
 
   // add city back to html
   $('#city').text(
@@ -186,7 +188,7 @@ $(document).ready(function() {
     $("#current-temp").css('color','rgba(34, 169, 239, 0.90)')
   } if (currentTemp > 90) {
     $("#current-temp").css('color','rgba(247, 62, 97, 0.90)')
-  } else if (currentTemp < 90 && currentTemp > 39) {
+  } else if (currentTemp < 89 && currentTemp > 39) {
     $("#current-temp").css('color','rgba(255, 215, 1, 0.80)')
   }
 

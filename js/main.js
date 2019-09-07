@@ -5,6 +5,7 @@
   API request is made based on the zipcode entered
   If no value then do not make API request
   On Function Date is created and added (without API)
+  Main container is shown
   City Name is added
   Status is added
   Switch statment for every type of status will change background and icon accordingly
@@ -118,6 +119,16 @@ $(document).ready(function() {
 //show main container
   $('.main').show()
 
+// hide all icons that might already be displaying
+  $('#clear-day').hide()
+  $('#partly-cloudy-day').hide()
+  $('#cloudy').hide()
+  $('#rain').hide()
+  $('#sleet').hide()
+  $('#snow').hide()
+  $('#wind').hide()
+  $('#fog').hide()
+
   // add date
   // create day and date
   let mydate = new Date()
@@ -194,13 +205,6 @@ $(document).ready(function() {
     $("body").css('background-image','url("img/sunny.jpg")');
     $("h1").css('color','black');
     $('#clear-day').show()
-    $('#partly-cloudy-day').hide()
-    $('#cloudy').hide()
-    $('#rain').hide()
-    $('#sleet').hide()
-    $('#snow').hide()
-    $('#wind').hide()
-    $('#fog').hide()
     break;
 // Clear skies ends fuck noooooo :(
 
@@ -212,13 +216,6 @@ $(document).ready(function() {
     $("body").css('background-image','url("img/partly-cloudy.jpg")');
     $("h1").css('color','black');
     $('#partly-cloudy-day').show()
-    $('#clear-day').hide()
-    $('#cloudy').hide()
-    $('#rain').hide()
-    $('#sleet').hide()
-    $('#snow').hide()
-    $('#wind').hide()
-    $('#fog').hide()
     break;
 // PARTLY CLOUDY ENDS
 
@@ -229,13 +226,6 @@ $(document).ready(function() {
     $("body").css('background-image','url("img/cloudy.jpg")');
     $("h1").css('color','white');
     $('#cloudy').show()
-    $('#clear-day').hide()
-    $('#partly-cloudy-day').hide()
-    $('#rain').hide()
-    $('#sleet').hide()
-    $('#snow').hide()
-    $('#wind').hide()
-    $('#fog').hide()
     break;
 // CLOUDY ENDS
 
@@ -253,13 +243,6 @@ $(document).ready(function() {
     $("body").css('background-image','url("img/drizzle.jpg")');
     $("h1").css('color','white');
     $('#rain').show()
-    $('#clear-day').hide()
-    $('#partly-cloudy-day').hide()
-    $('#cloudy').hide()
-    $('#sleet').hide()
-    $('#snow').hide()
-    $('#wind').hide()
-    $('#fog').hide()
     break;
 // RAIN ENDS
 
@@ -271,13 +254,6 @@ $(document).ready(function() {
     $("body").css('background-image','url("img/rainy.jpg")');
     $("h1").css('color','white');
     $('#rain').show()
-    $('#clear-day').hide()
-    $('#partly-cloudy-day').hide()
-    $('#cloudy').hide()
-    $('#sleet').hide()
-    $('#snow').hide()
-    $('#wind').hide()
-    $('#fog').hide()
     break;
 // RAIN ENDS
 
@@ -291,13 +267,6 @@ $(document).ready(function() {
     $("body").css('background-image','url("img/heavy-rain.jpg")');
     $("h1").css('color','white');
     $('#rain').show()
-    $('#clear-day').hide()
-    $('#partly-cloudy-day').hide()
-    $('#cloudy').hide()
-    $('#sleet').hide()
-    $('#snow').hide()
-    $('#wind').hide()
-    $('#fog').hide()
     break;
 // HEAVY RAIN ENDS
 
@@ -307,13 +276,6 @@ $(document).ready(function() {
     $("body").css('background-image','url("img/fog.jpg")');
     $("h1").css('color','black');
     $('#fog').show()
-    $('#clear-day').hide()
-    $('#partly-cloudy-day').hide()
-    $('#cloudy').hide()
-    $('#rain').hide()
-    $('#sleet').hide()
-    $('#snow').hide()
-    $('#wind').hide()
     break;
 // FOG ENDS
 
@@ -323,13 +285,6 @@ $(document).ready(function() {
     $("body").css('background-image','url("img/mist.jpg")');
     $("h1").css('color','black');
     $('#fog').show()
-    $('#clear-day').hide()
-    $('#partly-cloudy-day').hide()
-    $('#cloudy').hide()
-    $('#rain').hide()
-    $('#sleet').hide()
-    $('#snow').hide()
-    $('#wind').hide()
     break;
 // MIST ENDS
 
@@ -340,13 +295,6 @@ $(document).ready(function() {
     $("body").css('background-image','url("img/sand.jpg")');
     $("h1").css('color','black');
     $('#fog').show()
-    $('#clear-day').hide()
-    $('#partly-cloudy-day').hide()
-    $('#cloudy').hide()
-    $('#rain').hide()
-    $('#sleet').hide()
-    $('#snow').hide()
-    $('#wind').hide()
     break;
 // SAND ENDS
 
@@ -356,13 +304,6 @@ $(document).ready(function() {
     $("body").css('background-image','url("img/tornado.jpg")');
     $("h1").css('color','white');
     $('#wind').show()
-    $('#clear-day').hide()
-    $('#partly-cloudy-day').hide()
-    $('#cloudy').hide()
-    $('#rain').hide()
-    $('#sleet').hide()
-    $('#snow').hide()
-    $('#fog').hide()
     break;
 // TORNADO ENDS
 
@@ -372,13 +313,6 @@ $(document).ready(function() {
     $("body").css('background-image','url("img/windy.jpg")');
     $("h1").css('color','black');
     $('#wind').show()
-    $('#clear-day').hide()
-    $('#partly-cloudy-day').hide()
-    $('#cloudy').hide()
-    $('#rain').hide()
-    $('#sleet').hide()
-    $('#snow').hide()
-    $('#fog').hide()
     break;
 // SQUALLS ENDS
 
@@ -388,13 +322,6 @@ $(document).ready(function() {
     $("body").css('background-image','url("img/dust.jpg")');
     $("h1").css('color','black');
     $('#fog').show()
-    $('#clear-day').hide()
-    $('#partly-cloudy-day').hide()
-    $('#cloudy').hide()
-    $('#rain').hide()
-    $('#sleet').hide()
-    $('#snow').hide()
-    $('#wind').hide()
     break;
 // DUST ENDS
 
@@ -404,13 +331,6 @@ $(document).ready(function() {
     $("body").css('background-image','url("img/ash.jpg")');
     $("h1").css('color','white');
     $('#fog').show()
-    $('#clear-day').hide()
-    $('#partly-cloudy-day').hide()
-    $('#cloudy').hide()
-    $('#rain').hide()
-    $('#sleet').hide()
-    $('#snow').hide()
-    $('#wind').hide()
     break;
 // ASH ENDS
 
@@ -420,13 +340,6 @@ $(document).ready(function() {
     $("body").css('background-image','url("img/haze.jpg")');
     $("h1").css('color','black');
     $('#fog').show()
-    $('#clear-day').hide()
-    $('#partly-cloudy-day').hide()
-    $('#cloudy').hide()
-    $('#rain').hide()
-    $('#sleet').hide()
-    $('#snow').hide()
-    $('#wind').hide()
     break;
 // HAZE ENDS
 
@@ -436,13 +349,6 @@ $(document).ready(function() {
     $("body").css('background-image','url("img/smoke.jpg")');
     $("h1").css('color','black');
     $('#fog').show()
-    $('#clear-day').hide()
-    $('#partly-cloudy-day').hide()
-    $('#cloudy').hide()
-    $('#rain').hide()
-    $('#sleet').hide()
-    $('#snow').hide()
-    $('#wind').hide()
     break;
 // SMOKE ENDS
 
@@ -461,13 +367,6 @@ $(document).ready(function() {
     $("body").css('background-image','url("img/lightning.jpg")');
     $("h1").css('color','white');
     $('#rain').show()
-    $('#clear-day').hide()
-    $('#partly-cloudy-day').hide()
-    $('#cloudy').hide()
-    $('#sleet').hide()
-    $('#snow').hide()
-    $('#wind').hide()
-    $('#fog').hide()
     break;
 // THUNDERSTORM ENDS
 
@@ -481,13 +380,6 @@ $(document).ready(function() {
     $("body").css('background-image','url("img/sleet.jpg")');
     $("h1").css('color','white');
     $('#sleet').show()
-    $('#clear-day').hide()
-    $('#partly-cloudy-day').hide()
-    $('#cloudy').hide()
-    $('#rain').hide()
-    $('#snow').hide()
-    $('#wind').hide()
-    $('#fog').hide()
     break;
 // SNOW ENDS
 
@@ -504,13 +396,6 @@ $(document).ready(function() {
     $("body").css('background-image','url("img/snow.jpg")');
     $("h1").css('color','white');
     $('#snow').show()
-    $('#clear-day').hide()
-    $('#partly-cloudy-day').hide()
-    $('#cloudy').hide()
-    $('#rain').hide()
-    $('#sleet').hide()
-    $('#wind').hide()
-    $('#fog').hide()
     break;
 // SNOW ENDS
 

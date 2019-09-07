@@ -105,7 +105,7 @@ h1 {
     font-size: 1.5em;
     color: #fff;
     font-weight: 300;
-    line-height: 1.3em;
+    line-height: 1.8em;
 }
 
 .form-container{
@@ -198,11 +198,11 @@ vertical-align: middle;
     color: #fff;
     font-weight: 300;
     letter-spacing: 1px;
-    margin-top: 1em;
+    margin-top: .3em;
 }
 
 .weather-icon {
-    margin: 1em auto 0;
+    margin: .9em auto 0;
 }
 
 .status{
@@ -217,6 +217,9 @@ vertical-align: middle;
 
 /* responsive-design */
 @media(max-width: 4000px){
+  h1 {
+      font-size: 2.8em;
+   }
 .main {
     width: 27%;
  }
@@ -251,7 +254,7 @@ h1 {
 
 @media(max-width: 768px){
 .weather-icon  {
-    margin: 2em auto 0;
+    margin: 1.3em auto 0;
  }
 
 }
@@ -263,7 +266,7 @@ h1 {
 
 @media(max-width: 600px){
   h1 {
-      font-size: 2.6em;
+      font-size: 2.4em;
    }
   .text-container h6 {
       margin-top: 0.5em;
@@ -275,7 +278,7 @@ h1 {
 
 @media(max-width: 480px){
   h1 {
-      font-size: 2.6em;
+      font-size: 2.4em;
    }
   .main {
       width: 57%;
@@ -306,7 +309,7 @@ h1 {
 
 @media(max-width: 384px){
   h1 {
-      font-size: 2.4em;
+      font-size: 2.2em;
   }
   .main{
       width: 70%;
@@ -315,7 +318,7 @@ h1 {
 
 @media(max-width:320px){
   h1 {
-      font-size: 2.4em;
+      font-size: 2.2em;
    }
   .main {
       width: 75%;
@@ -325,7 +328,7 @@ h1 {
       font-size: 5em;
    }
   .text-container h4 {
-      font-size: 1.4em;
+      font-size: 1.8em;
    }
   .text-container h6 {
       letter-spacing: 0px;

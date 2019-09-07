@@ -144,7 +144,7 @@ $(document).ready(function() {
   let montharray = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec")
 
   // add day to html
-  $('#day').text(" "+montharray[month]+" "+daym+" "+dayarray[day]+"")
+  $('#day').text(""+dayarray[day]+", "+montharray[month]+" "+daym+"")
 
   // add city back to html
   $('#city').text(

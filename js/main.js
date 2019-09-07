@@ -149,9 +149,7 @@ $(document).ready(function() {
   $('#day').text(""+hours+":"+min+" "+dayarray[day]+", "+montharray[month]+" "+daym+"")
 
   // add city back to html
-  $('#city').text(
-    `${weatherData.name},${weatherData.sys.country}`
-  )
+  $('#city').text(`${weatherData.name},${weatherData.sys.country}`)
 
 // function declared for pulling in results once container is shown
   getWeatherStatus()

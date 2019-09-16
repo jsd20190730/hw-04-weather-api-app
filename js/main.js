@@ -247,6 +247,7 @@ $(document).ready(function() {
   case ('drizzle rain'):
   case ('heavy intensity drizzle rain'):
   case ('shower rain and drizzle'):
+  case ('light intensity shower rain'):
   case ('heavy shower rain and drizzle'):
   case ('shower drizzle'):
     console.log("drizzle")

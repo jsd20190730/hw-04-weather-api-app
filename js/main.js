@@ -145,18 +145,11 @@ $(document).ready(function() {
   let dayarray = new Array("Sun","Mon","Tues","Wed","Thurs","Fri","Sat")
   let montharray = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec")
 
-// //covert military time to standard time
-  function toStandardTime(militaryTime) {
-    militaryTime = militaryTime.split(':');
-    if (militaryTime[0].charAt(0) == 1 && militaryTime[0].charAt(1) > 2) {
-      return (militaryTime[0] - 12) + ':' + militaryTime[1] + ' PM';
-    } else {
-      return militaryTime.join(':') + ' AM';
-    }
-  }
-  console.log(toStandardTime(""+hours+":"+min+""));
+  function standardTimeConvert(input) {
+    return moment(input, 'HH:mm').format('h:mm A');
+}
   // add day to html
-  $('#day').text(""+hours+":"+min+" "+dayarray[day]+", "+montharray[month]+" "+daym+"")
+  $('#day').text(""+standardTimeConvert(""+hours+":"+min+"")+" "+dayarray[day]+", "+montharray[month]+" "+daym+"")
 
   // add city back to html
   $('#city').text(`${weatherData.name},${weatherData.sys.country}`)

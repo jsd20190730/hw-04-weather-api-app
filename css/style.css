@@ -85,6 +85,7 @@ h1 {
     padding: 1.3em 0 0;
 }
 
+
 .main {
     width: 25%;
     margin: 2em auto;
@@ -223,21 +224,37 @@ vertical-align: middle;
 .main {
     width: 27%;
  }
+#search-form{
+  width: 50%;
+  text-align: center;
+ }
 }
 
 @media(max-width: 1280px){
 .main {
     width: 31%;
  }
+ #search-form{
+   width: 60%;
+   text-align: center;
+  }
 }
 
 @media(max-width: 1080px){
 .main {
     width: 35%;
  }
+ #search-form{
+   width: 60%;
+   text-align: center;
+  }
 }
 
 @media(max-width: 991px){
+  #search-form{
+    width: 70%;
+    text-align: center;
+   }
 .container {
     padding: 2em 0 0;
  }
@@ -253,18 +270,30 @@ h1 {
 }
 
 @media(max-width: 768px){
+  #search-form{
+    width: 70%;
+    text-align: center;
+   }
 .weather-icon  {
     margin: 1.3em auto 0;
  }
 
 }
 @media(max-width: 667px){
+  #search-form{
+    width: 70%;
+    text-align: center;
+   }
 .main {
     width: 50%;
  }
 }
 
 @media(max-width: 600px){
+  #search-form{
+    width: 70%;
+    text-align: center;
+   }
   h1 {
       font-size: 2.4em;
    }
@@ -277,6 +306,11 @@ h1 {
 }
 
 @media(max-width: 480px){
+  #search-form{
+    width: 70%;
+    text-align: left;
+    float:left;
+   }
   h1 {
       font-size: 2.4em;
    }
@@ -291,7 +325,17 @@ h1 {
  }
 }
 
-@media(max-width: 414px){
+@media(max-width: 430px){
+  #search-form{
+    width: 80%;
+    text-align: left;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+   }
+   #search-btn{
+     display:none;
+   }
 .text-container h2 {
     font-size: 6em;
  }
@@ -308,6 +352,11 @@ h1 {
 }
 
 @media(max-width: 384px){
+  #search-form{
+    width: 80%;
+    text-align: left;
+    float: left;
+   }
   h1 {
       font-size: 2.2em;
   }
@@ -317,6 +366,11 @@ h1 {
 }
 
 @media(max-width:320px){
+  #search-form{
+    width: 80%;
+    text-align: left;
+    float: left;
+   }
   h1 {
       font-size: 2.2em;
    }

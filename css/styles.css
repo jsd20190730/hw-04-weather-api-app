@@ -1,0 +1,58 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.container {
+  padding-top: 100px;
+  width: 1080px;
+  margin: 0 auto;
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  background-color: blanchedalmond;
+}
+
+#search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+#search p {
+  font-size: 1.2rem;
+  padding: 0;
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+#search input {
+  padding: 5px;
+  width: 300px;
+  font-size: 1.2rem;
+  background-color: whitesmoke;
+}
+
+#search button {
+  font-weight: bold;
+  background: #818194;
+  color: white;
+  border-radius: 4px;
+  margin-left: 10px;
+  font-size: 1rem;
+  padding: 7px;
+  border-radius: 12px;
+}
+
+.results-table {
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+
+table, td, th {
+  border: 1px solid orange;
+  padding: 10px;
+  text-align: center;
+}
